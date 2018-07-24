@@ -1,0 +1,50 @@
+.m-message {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ebeef5;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background-color: #edf2fc;
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  & &__close{
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.m-message-fade-enter-active{
+  animation: m-message-fade-in 0.3s;
+}
+.m-message-fade-leave-active{
+  animation:m-message-fade-out 0.3s;
+}
+
+@keyframes m-message-fade-in {
+  0%{
+    top: 0px;
+    opacity: 0;
+  }
+  100% {
+    top: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes m-message-fade-out {
+  0%{
+    top: 20px;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    opacity: 0;
+  }
+}

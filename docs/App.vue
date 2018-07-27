@@ -55,6 +55,7 @@ export default {
     show () {
       this.$message({
         type: 'success',
+        duration: -1,
         message: 'this is a test.'
       })
     }

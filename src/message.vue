@@ -1,6 +1,7 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div class="m-message" v-show="show"
+  <div v-show="show"
+    :class="['m-message', type && 'm-message-' + type]"
     @mouseenter="clearTimer"
     @mouseleave="startTimer"
     >

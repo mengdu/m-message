@@ -1,22 +1,38 @@
+.m-message-container {
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 16px;
+  left: 0;
+  pointer-events: none
+}
 .m-message {
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px solid #ebeef5;
   position: fixed;
   left: 50%;
-  top: 20px;
   transform: translateX(-50%);
-  background-color: #edf2fc;
+  margin: 5px;
+  padding: 10px 16px;
+  font-size: 14px;
   overflow: hidden;
-  padding: 10px;
   display: flex;
   align-items: center;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  color: rgba(0,0,0,.65);
+  background: rgba(255,255,255,0.95);
+  top: 20px;
+  pointer-events: all;
 
   & &__close{
     border: none;
-    border-radius: 50%;
     outline: none;
+    background: none;
     cursor: pointer;
+    font-size: 13px;
+    color: #000000;
+    font-weight: 600;
+    padding-left: 10px;
   }
 }
 

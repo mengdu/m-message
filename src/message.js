@@ -4,31 +4,36 @@ const MessageConstructor = Vue.extend(MessageTemplate)
 
 const instances = []
 let count = 1
+let msgContainer = null
+
+window.instances = instances
+window.msgContainer = msgContainer
 
 const Message = function (options) {
   let userOnClose = options.onClose
-
+  if (!msgContainer) {
+    msgContainer = document.createElement('div')
+    msgContainer.className = 'm-message-container'
+    document.body.appendChild(msgContainer)
+  }
+  const id = count++
+  options.onClose = function () {
+    console.log('close')
+    Message.close(id, userOnClose)
+  }
   const instance = new MessageConstructor({
     // el: document.createElement('div'),
-    data () {
-      return {
-        ...options
-      }
-    }
+    data: options
   })
 
-  instance.id = count++
-
-  options.onClose = function () {
-    Message.close(instance.id, userOnClose)
-  }
-
+  instance.id = id
   // instance.vm = instance.$mount()
   // document.body.appendChild(instance.vm.$el)
   // instance.vm.show = true
 
   instance.vm = instance.$mount()
-  document.body.appendChild(instance.vm.$el)
+  // document.body.appendChild(instance.vm.$el)
+  msgContainer.appendChild(instance.vm.$el)
   instance.vm.show = true
   instance.dom = instance.vm.$el
 
@@ -47,6 +52,12 @@ Message.close = function (id, userOnClose) {
       break
     }
   }
+  setTimeout(function () {
+    if (instances.length === 0 && msgContainer) {
+      msgContainer.remove()
+      msgContainer = null
+    }
+  }, 3000)
 }
 
 export default Message

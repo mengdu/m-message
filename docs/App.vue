@@ -20,6 +20,11 @@
       <!-- <readme></readme> -->
       <!-- <Doc/> -->
       <m-button @click="show">show</m-button>
+      <m-button @click="$message({type: 'info', message: '提示信息'})" type="info">info</m-button>
+      <m-button @click="$message({type: 'error', message: '提示信息'})" type="danger">error</m-button>
+      <m-button @click="$message({type: 'success', message: '提示信息'})" type="success">success</m-button>
+      <m-button @click="$message({type: 'warning', message: '提示信息'})" type="warning">warning</m-button>
+      <m-button @click="loading" type="primary">loading</m-button>
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -57,6 +62,13 @@ export default {
         type: 'success',
         duration: -1,
         message: 'this is a test.'
+      })
+    },
+    loading () {
+      this.$message({
+        type: 'loading',
+        message: 'Loading...',
+
       })
     }
   }

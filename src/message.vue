@@ -1,17 +1,30 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div v-show="show"
+  <div v-show="show">
+  <div
     :class="['m-message', type && 'm-message-' + type]"
     @mouseenter="clearTimer"
     @mouseleave="startTimer"
     >
+    <img :src="typeImg" v-if="typeImg && type !== 'loading'" class="m-message-type-img"/>
+    <loading width="22" type="wipe" v-if="type === 'loading'"></loading>
     {{message}}
-    <button class="m-message__close" @click="close"><span>×</span></button>
+    <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
+  </div>
   </div>
 </transition>
 </template>
 <script>
+import infoImg from './assets/info.png'
+import errorImg from './assets/error.png'
+import successImg from './assets/success.png'
+import warningImg from './assets/warning.png'
+import Loading from './loading'
+
 export default {
+  components: {
+    Loading
+  },
   data () {
     return {
       show: false,
@@ -22,6 +35,17 @@ export default {
       onClose: null,
       timer: null,
       closed: false
+    }
+  },
+  computed: {
+    typeImg () {
+      let m = {
+        info: infoImg,
+        error: errorImg,
+        success: successImg,
+        warning: warningImg
+      }
+      return m[this.type]
     }
   },
   watch: {
@@ -43,7 +67,7 @@ export default {
       clearTimeout(this.timer)
     },
     startTimer () {
-      if (this.duration > 0) {
+      if (this.duration > 0 && this.type !== 'loading') {
         this.timer = setTimeout(() => {
           if (!this.closed) {
             this.close()
@@ -58,8 +82,12 @@ export default {
     }
   },
   mounted () {
-    this.startTimer()
-  },
-  beforeDestroy () {}
+    if (this.type !== 'loading') {
+      this.startTimer()
+      if (this.duration <= 0) {
+        this.showClose = true
+      }
+    }
+  }
 }
 </script>

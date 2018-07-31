@@ -18,28 +18,20 @@ const Message = function (options) {
   }
   const id = count++
   options.onClose = function () {
-    console.log('close')
     Message.close(id, userOnClose)
   }
   const instance = new MessageConstructor({
-    // el: document.createElement('div'),
+    el: document.createElement('div'),
     data: options
   })
 
   instance.id = id
-  // instance.vm = instance.$mount()
-  // document.body.appendChild(instance.vm.$el)
-  // instance.vm.show = true
-
-  instance.vm = instance.$mount()
-  // document.body.appendChild(instance.vm.$el)
-  msgContainer.appendChild(instance.vm.$el)
-  instance.vm.show = true
-  instance.dom = instance.vm.$el
+  msgContainer.appendChild(instance.$el)
+  instance.show = true
 
   instances.push(instance)
 
-  return instance.vm
+  return instance
 }
 
 Message.close = function (id, userOnClose) {
@@ -59,5 +51,20 @@ Message.close = function (id, userOnClose) {
     }
   }, 3000)
 }
+
+Message.closeAll = function () {
+  for (let i = instances.length - 1; i >= 0; i--) {
+    instances[i].close()
+  }
+}
+
+const types = ['info', 'success', 'error', 'warning', 'loading']
+
+types.forEach(type => {
+  Message[type] = function (options) {
+    options = typeof options === 'string' ? {message: options} : options
+    return Message({...options, type})
+  }
+})
 
 export default Message

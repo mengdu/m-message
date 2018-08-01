@@ -1,16 +1,22 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div v-show="show">
-  <div
-    :class="['m-message', type && 'm-message-' + type]"
-    @mouseenter="clearTimer"
-    @mouseleave="startTimer"
-    >
-    <img :src="typeImg" v-if="typeImg && type !== 'loading'" class="m-message-type-img"/>
-    <loading width="22" type="wipe" v-if="type === 'loading'"></loading>
-    {{message}}
-    <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
-  </div>
+  <div v-show="show" class="m-message-wrapper"
+    :style="{
+      zIndex: wrapperzIndex
+    }"
+    :class="{
+      'm-message-center': align === 'center'
+    }">
+    <div
+      :class="['m-message', type && 'm-message-' + type]"
+      @mouseenter="clearTimer"
+      @mouseleave="startTimer"
+      >
+      <img :src="typeImg" v-if="typeImg && type !== 'loading'" class="m-message-type-img"/>
+      <loading width="22" type="wipe" v-if="type === 'loading'"></loading>
+      {{message}}
+      <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
+    </div>
   </div>
 </transition>
 </template>
@@ -34,7 +40,9 @@ export default {
       showClose: false,
       onClose: null,
       timer: null,
-      closed: false
+      closed: false,
+      align: '',
+      zIndex: ''
     }
   },
   computed: {
@@ -46,6 +54,9 @@ export default {
         warning: warningImg
       }
       return m[this.type]
+    },
+    wrapperzIndex () {
+      return (this.align === 'center' && this.zIndex) ? this.zIndex : false
     }
   },
   watch: {

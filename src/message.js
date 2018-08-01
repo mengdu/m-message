@@ -16,10 +16,14 @@ const Message = function (options) {
     msgContainer.className = 'm-message-container'
     document.body.appendChild(msgContainer)
   }
+  if (options.zIndex) {
+    msgContainer.style.zIndex = options.zIndex
+  }
   const id = count++
   options.onClose = function () {
     Message.close(id, userOnClose)
   }
+
   const instance = new MessageConstructor({
     el: document.createElement('div'),
     data: options
@@ -27,6 +31,7 @@ const Message = function (options) {
 
   instance.id = id
   msgContainer.appendChild(instance.$el)
+  // 挂载后再设置显示才有过渡效果
   instance.show = true
 
   instances.push(instance)
@@ -40,6 +45,7 @@ Message.close = function (id, userOnClose) {
       if (typeof userOnClose === 'function') {
         userOnClose(instances[i])
       }
+      instances[i] = null
       instances.splice(i, 1)
       break
     }

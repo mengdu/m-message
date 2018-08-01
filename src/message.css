@@ -1,0 +1,82 @@
+.m-message-container {
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  pointer-events: none;
+}
+.m-message {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.65);
+  background: rgba(255, 255, 255, 0.95);
+  pointer-events: all;
+}
+.m-message-wrapper.m-message-center {
+  z-index: 1100;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0.151);
+}
+.m-message .m-message-type-img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.m-message .m-loading-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.m-message .m-message__close {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #646464;
+  font-weight: 600;
+  padding-left: 15px;
+  margin-right: -7px;
+}
+.m-message-fade-enter-active {
+  animation: m-message-fade-in 0.3s;
+}
+.m-message-fade-leave-active {
+  animation: m-message-fade-out 0.3s;
+}
+@keyframes m-message-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes m-message-fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

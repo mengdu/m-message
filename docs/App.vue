@@ -25,6 +25,7 @@
       <m-button @click="$message({type: 'success', message: '提示信息'})" type="success">success</m-button>
       <m-button @click="$message({type: 'warning', message: '提示信息'})" type="warning">warning</m-button>
       <m-button @click="loading" type="primary">loading</m-button>
+      <m-button @click="handleDemo" type="primary">具有遮罩的提示</m-button>
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -61,7 +62,8 @@ export default {
       this.$message({
         type: 'success',
         duration: -1,
-        message: 'this is a test.'
+        message: 'this is a test.',
+        zIndex: 2000
       })
     },
     loading () {
@@ -70,6 +72,16 @@ export default {
         message: 'Loading...',
 
       })
+    },
+    handleDemo () {
+      let l = this.$message.loading({
+        message: '请求处理中...',
+        align: 'center'
+      })
+
+      setTimeout(function () {
+        l.close()
+      }, 5000)
     }
   }
 }

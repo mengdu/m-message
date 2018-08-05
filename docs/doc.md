@@ -1,42 +1,92 @@
-<!-- <m-button @click="handleClick" >button</m-button> -->
+<span id="example"></span>
+## 例子
+
+:::demo 在线例子
+
+```html
+<select v-model="type" class="m-input">
+  <option v-for="item in types" :key="item" :value="item">{{item}}</option>
+</select>
+<input type="text" v-model="message" class="m-input">
+<m-button type="info" @click="handleShowMsg">显示消息</m-button>
+<m-button type="danger" @click="handleCloseAll">关闭所有</m-button>
 <script>
   export default {
     data () {
       return {
-        input: 'hello'
+        types: [
+          'info',
+          'success',
+          'error',
+          'warning',
+          'loading'
+        ],
+        type: '',
+        message: 'This is a test.'
       }
     },
     methods: {
-      handleClick() {
-        alert('button click');
-        console.log(this.input)
+      handleShowMsg() {
+        this.$message({
+          message: this.message,
+          type: this.type,
+          showClose: true
+        })
+      },
+      handleCloseAll () {
+        this.$message.closeAll()
+      },
+      handleLoading () {
+        let l = this.$message.loading('处理中...')
+        setTimeout(function () {
+          l.close()
+        }, 3000)
+      },
+      handleCenterLoading () {
+        let l = this.$message.loading({
+          message: '居中显示...',
+          align: 'center'
+        })
+        setTimeout(function () {
+          l.close()
+        }, 3000)
       }
     }
   }
 </script>
-
-<span id="example"></span>
-## Online demo1
-
-:::demo 在线 `demo`。
-
-```html
-<m-button @click="handleClick" type="info">info</m-button>
-<m-button @click="handleClick" type="danger">danger</m-button>
 ```
-
 :::
 
-## Online demo2
 
-:::demo 在线 `demo2`。
+:::demo `loading` 类型信息并不会自动关闭，请主动调用关闭
 
 ```html
-<div>
-  <m-input v-model="input" placeholder="输入框" ></m-input>
-  <p>{{input}}</p>
-</div>
+<m-button type="info" @click="handleLoading">Loading</m-button>
+<m-button type="info" @click="handleCenterLoading">遮罩&居中显示</m-button>
+<script>
+  export default {
+    data () {
+      return {}
+    },
+    methods: {
+      handleLoading () {
+        let l = this.$message.loading('处理中...')
+        setTimeout(function () {
+          l.close()
+        }, 3000)
+      },
+      handleCenterLoading () {
+        let l = this.$message.loading({
+          message: '居中显示...',
+          align: 'center',
+          showClose: true
+        })
+        setTimeout(function () {
+          l.close()
+        }, 3000)
+      }
+    }
+  }
+</script>
 ```
-
 :::
-

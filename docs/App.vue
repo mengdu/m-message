@@ -17,15 +17,15 @@
       </div>
     </header>
     <main class="doc-block">
-      <!-- <readme></readme> -->
-      <!-- <Doc/> -->
-      <m-button @click="show">show</m-button>
+      <readme></readme>
+      <Doc/>
+      <!-- <m-button @click="show">show</m-button>
       <m-button @click="$message({type: 'info', message: '提示信息'})" type="info">info</m-button>
       <m-button @click="$message({type: 'error', message: '提示信息'})" type="danger">error</m-button>
       <m-button @click="$message({type: 'success', message: '提示信息'})" type="success">success</m-button>
       <m-button @click="$message({type: 'warning', message: '提示信息'})" type="warning">warning</m-button>
       <m-button @click="loading" type="primary">loading</m-button>
-      <m-button @click="handleDemo" type="primary">具有遮罩的提示</m-button>
+      <m-button @click="handleDemo" type="primary">具有遮罩的提示</m-button> -->
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -34,14 +34,14 @@
 <script>
 import LayoutFooter from './components/footer'
 import ForkLink from './components/fork-link'
-// import Doc from './doc.md'
+import Doc from './doc.md'
 import Readme from '~/README.md'
 import pkg from '~/package.json'
 
 export default {
   name: 'App',
   components: {
-    // Doc,
+    Doc,
     LayoutFooter,
     ForkLink,
     Readme

@@ -1,19 +1,18 @@
 {
   "name": "vue-m-message",
   "version": "1.0.0",
-  "description": "A Vue.js component devtool",
-  "author": "lanyueos@qq.com",
+  "description": "A message plugin for vue.",
   "license": "MIT",
   "main": "./index.js",
   "repository": {
     "type": "https",
-    "url": "git+https://github.com/mengdu/vue-component-devtool"
+    "url": "git+https://github.com/mengdu/m-message"
   },
   "bugs": {
-    "url": "https://github.com/mengdu/vue-component-devtool/issues"
+    "url": "https://github.com/mengdu/m-message/issues"
   },
   "keywords": [
-    "vue-component-devtool"
+    "m-message"
   ],
   "files": [
     "src",
@@ -21,7 +20,7 @@
     "example",
     "index.js"
   ],
-  "homepage": "https://mengdu.github.io/vue-component-devtool/example/",
+  "homepage": "https://mengdu.github.io/m-message/example/",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

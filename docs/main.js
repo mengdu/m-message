@@ -10,6 +10,7 @@ import Message from '@/index'
 
 Vue.use(MButton)
 Vue.use(Message)
+// Vue.use(Message, {name: 'msg'})
 Vue.component('DemoBlock', DemoBlock)
 Vue.config.productionTip = false
 

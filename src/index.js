@@ -3,7 +3,7 @@ import './message.less'
 
 Message.install = function (Vue, options) {
   if (options && options.name) {
-    Vue.prototype[`$${name}`] = Message
+    Vue.prototype[`$${options.name}`] = Message
   } else {
     Vue.prototype.$message = Message
   }

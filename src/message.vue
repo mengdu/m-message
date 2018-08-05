@@ -12,8 +12,7 @@
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
       >
-      <img :src="typeImg" v-if="typeImg && type !== 'loading'" class="m-message-type-img"/>
-      <loading width="22" type="wipe" v-if="type === 'loading'"></loading>
+      <img :src="typeImg" v-if="typeImg" class="m-message-type-img"/>
       {{message}}
       <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
     </div>
@@ -25,12 +24,9 @@ import infoImg from './assets/info.svg'
 import errorImg from './assets/error.svg'
 import successImg from './assets/success.svg'
 import warningImg from './assets/warning.svg'
-import Loading from './loading'
+import loadingImg from './assets/loading.svg'
 
 export default {
-  components: {
-    Loading
-  },
   data () {
     return {
       show: false,
@@ -51,7 +47,8 @@ export default {
         info: infoImg,
         error: errorImg,
         success: successImg,
-        warning: warningImg
+        warning: warningImg,
+        loading: loadingImg
       }
       return m[this.type]
     },

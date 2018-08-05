@@ -21,10 +21,10 @@
 </transition>
 </template>
 <script>
-import infoImg from './assets/info.png'
-import errorImg from './assets/error.png'
-import successImg from './assets/success.png'
-import warningImg from './assets/warning.png'
+import infoImg from './assets/info.svg'
+import errorImg from './assets/error.svg'
+import successImg from './assets/success.svg'
+import warningImg from './assets/warning.svg'
 import Loading from './loading'
 
 export default {

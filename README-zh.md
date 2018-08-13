@@ -1,9 +1,12 @@
 # m-message
 
-A message plugin for vue.
-
+Vue 的消息插件。
 
 > 原理参考了element-ui的 [message](https://github.com/ElemeFE/element/blob/dev/packages/message/index.js) 组件的的实现，样式风格参考了 [ant-message](https://ant.design/components/message-cn/)
+
+[English Docs](READEME-zh.md)
+
+[Live Demo](https://mengdu.github.io/m-message/example/)
 
 
 ```js
@@ -37,5 +40,5 @@ Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
 | options.showClose   |  显示close按钮  | false/true | —  |   false   |
 | options.onClose   |  关闭回调   | function | —  |    —   |
 | options.duration   |  消息显示时长，单位ms；-1时不会自定关闭  | number | —  |   3000   |
-| options.zIndex   |  堆叠顺序   | number | —  |    默认1010   |
+| options.zIndex   |  堆叠顺序   | number | —  |    1010   |
 | options.algin   |  位置设置   | string | center  |   空   |

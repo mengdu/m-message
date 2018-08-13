@@ -5,6 +5,12 @@ A message plugin for vue.
 > Refer to the implementation of ElementUI [message](https://github.com/ElemeFE/element/blob/dev/packages/message/index.js) component.
 > Style reference [ant-message](https://ant.design/components/message-cn/) component
 
+[中文文档](READEME-zh.md)
+
+[Live Demo](https://mengdu.github.io/m-message/example/)
+
+
+
 ```js
 import Message from 'vue-m-message'
 
@@ -35,6 +41,6 @@ Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
 | options.message   |  message content  | string | —  |    ''   |
 | options.showClose   |  show close button  | false/true | —  |   false   |
 | options.onClose   |  close callback function   | function | —  |    —   |
-| options.duration   |  message display duration , unit ms；-1 not closed  | number | —  |   3000   |
-| options.zIndex   |  z-index   | number | —  |    默认1010   |
+| options.duration   |  message display duration, unit ms, -1 not closed  | number | —  |   3000   |
+| options.zIndex   |  z-index   | number | —  |   1010   |
 | options.algin   |  show position   | string | center  |   空   |

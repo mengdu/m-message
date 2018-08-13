@@ -5,7 +5,7 @@ A message plugin for vue.
 > Refer to the implementation of ElementUI [message](https://github.com/ElemeFE/element/blob/dev/packages/message/index.js) component.
 > Style reference [ant-message](https://ant.design/components/message-cn/) component
 
-[中文文档](READEME-zh.md)
+[中文文档](README-zh.md)
 
 [Live Demo](https://mengdu.github.io/m-message/example/)
 

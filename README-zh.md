@@ -4,7 +4,7 @@ Vue 的消息插件。
 
 > 原理参考了element-ui的 [message](https://github.com/ElemeFE/element/blob/dev/packages/message/index.js) 组件的的实现，样式风格参考了 [ant-message](https://ant.design/components/message-cn/)
 
-[English Docs](READEME-zh.md)
+[English Docs](README.md)
 
 [Live Demo](https://mengdu.github.io/m-message/example/)
 

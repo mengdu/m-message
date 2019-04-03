@@ -3,7 +3,7 @@
     <style>
       .m-loading-icon {
         stroke: #343640;
-        stroke-width: 2;
+        stroke-width: 3.5;
         stroke-linecap: round;
         background: none;
         vertical-align: middle;

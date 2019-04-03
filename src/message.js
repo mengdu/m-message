@@ -6,9 +6,6 @@ const instances = []
 let count = 1
 let msgContainer = null
 
-window.instances = instances
-window.msgContainer = msgContainer
-
 const Message = function (options) {
   let userOnClose = options.onClose
   if (!msgContainer) {

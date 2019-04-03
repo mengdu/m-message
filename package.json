@@ -17,7 +17,6 @@
   "files": [
     "src",
     "dist",
-    "example",
     "index.js"
   ],
   "homepage": "https://mengdu.github.io/m-message/example/",

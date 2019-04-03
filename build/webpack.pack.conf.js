@@ -38,7 +38,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     umdNamedDefine: config.pack.umdNamedDefine
   },
   externals: {
-    vue: 'vue'
+    vue: 'Vue' // require('vue') => window.Vue
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

@@ -19,6 +19,7 @@
   color: rgba(0, 0, 0, 0.65);
   background: rgba(255, 255, 255, 0.95);
   pointer-events: all;
+  position: relative;
 }
 .m-message-wrapper.m-message-center {
   z-index: 1100;
@@ -33,17 +34,29 @@
   pointer-events: all;
   background: rgba(255, 255, 255, 0.151);
 }
-.m-message .m-message-type-img {
-  width: 20px;
-  height: 20px;
+.m-message-type-img {
+  width: 25px;
+  height: 25px;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-left: -30px;
+  display: inline-block;
 }
 .m-message .m-loading-icon {
   vertical-align: middle;
   margin-right: 5px;
 }
-.m-message .m-message__close {
+.m-message .m-message-wrap {
+  max-width: 500px;
+  padding-left: 30px;
+}
+.m-message .m-message-content {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  word-break: break-all;
+  line-height: 25px;
+}
+.m-message__close {
   border: none;
   outline: none;
   background: none;
@@ -51,8 +64,13 @@
   font-size: 13px;
   color: #646464;
   font-weight: 600;
-  padding-left: 15px;
+  margin-left: 10px;
   margin-right: -7px;
+  width: 20px;
+  height: 20px;
+}
+.m-message__close:hover {
+  color: #F56C6C;
 }
 .m-message-fade-enter-active {
   animation: m-message-fade-in 0.3s;

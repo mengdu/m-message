@@ -17,6 +17,15 @@
       </div>
     </header>
     <main class="doc-block">
+      <ul class="status-icons">
+        <li @click="$message.info({duration: 0, message: 'Info message !'})"><icon name="info" class="status-icon"/> <span class="icon-type" >Info</span></li>
+        <li @click="$message.success('Success message !')"><icon name="success" class="status-icon"/> <span class="icon-type">Success</span></li>
+        <li @click="$message.error('Error message !')"><icon name="error" class="status-icon"/> <span class="icon-type">Error</span></li>
+        <li @click="$message.warning('Warning message !')"><icon name="warning" class="status-icon"/> <span class="icon-type">Warning</span></li>
+        <li @click="$message.loading('Loading message !')"><icon name="loading" class="status-icon"/> <span class="icon-type">Loading</span></li>
+      </ul>
+    </main>
+    <main class="doc-block">
       <readme></readme>
       <Doc/>
       <!-- <m-button @click="show">show</m-button>
@@ -37,6 +46,12 @@ import ForkLink from './components/fork-link'
 import Doc from './doc.md'
 import Readme from '~/README.md'
 import pkg from '~/package.json'
+import infoIcon from '../src/assets/info.svg'
+import successIcon from '../src/assets/success.svg'
+import errorIcon from '../src/assets/error.svg'
+import warningIcon from '../src/assets/warning.svg'
+import loadingIcon from '../src/assets/loading.svg'
+import Icon from '../src/icon'
 
 export default {
   name: 'App',
@@ -44,12 +59,17 @@ export default {
     Doc,
     LayoutFooter,
     ForkLink,
-    Readme
+    Readme,
+    Icon
   },
   data () {
     return {
       pkg,
-      test: 'xxx'
+      infoIcon,
+      successIcon,
+      errorIcon,
+      warningIcon,
+      loadingIcon
     }
   },
   computed: {
@@ -83,6 +103,15 @@ export default {
         l.close()
       }, 5000)
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.$message({
+        message: 'Wellcome to here !',
+        iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
+        duration: -1
+      })
+    }, 2000)
   }
 }
 </script>

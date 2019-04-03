@@ -12,25 +12,28 @@
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
       >
-      <img :src="typeImg" v-if="typeImg" class="m-message-type-img"/>
-      {{message}}
-      <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
+      <div class="m-message-wrap">
+        <img v-if="iconImg" :src="iconImg" class="m-message-type-img"/>
+        <icon v-else :name="type" class="m-message-type-img" />
+        <div class="m-message-content">
+          <span>{{message}}</span>
+          <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
+        </div>
+      </div>
     </div>
   </div>
 </transition>
 </template>
 <script>
-import infoImg from './assets/info.svg'
-import errorImg from './assets/error.svg'
-import successImg from './assets/success.svg'
-import warningImg from './assets/warning.svg'
-import loadingImg from './assets/loading.svg'
+import Icon from './icon'
 
 export default {
+  components: { Icon },
   data () {
     return {
       show: false,
       type: 'info',
+      iconImg: '',
       message: '',
       duration: 3000,
       showClose: false,
@@ -42,16 +45,6 @@ export default {
     }
   },
   computed: {
-    typeImg () {
-      let m = {
-        info: infoImg,
-        error: errorImg,
-        success: successImg,
-        warning: warningImg,
-        loading: loadingImg
-      }
-      return m[this.type]
-    },
     wrapperzIndex () {
       return (this.align === 'center' && this.zIndex) ? this.zIndex : false
     }

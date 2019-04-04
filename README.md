@@ -44,3 +44,4 @@ Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
 | options.duration   |  message display duration, unit ms, -1 not closed  | number | —  |   3000   |
 | options.zIndex   |  z-index   | number | —  |   1010   |
 | options.algin   |  show position   | string | center  |   空   |
+| options.iconImg   | Img icon URL  | string | —  |   —   |

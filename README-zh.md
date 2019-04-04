@@ -42,3 +42,4 @@ Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
 | options.duration   |  消息显示时长，单位ms；-1时不会自定关闭  | number | —  |   3000   |
 | options.zIndex   |  堆叠顺序   | number | —  |    1010   |
 | options.algin   |  位置设置   | string | center  |   空   |
+| options.iconImg   | 图片图标url  | string | —  |   —   |

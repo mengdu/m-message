@@ -15,7 +15,7 @@
   overflow: hidden;
   border-radius: 4px;
   box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.15);
   color: rgba(0, 0, 0, 0.65);
   background: rgba(255, 255, 255, 0.95);
   pointer-events: all;
@@ -37,21 +37,26 @@
 .m-message--icon {
   float: left;
   box-sizing: border-box;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .m-message--title {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.m-message--content {
+.m-message-content {
   box-sizing: border-box;
   overflow: auto;
-  padding: 5px;
   width: 100%;
+}
+.m-message--description {
+  line-height: 1.6;
+  color: #777;
+}
+.m-message--title + .m-message--description {
+  margin-top: 5px;
 }
 .m-message-icon-img {
   width: 25px;
@@ -65,6 +70,8 @@
   height: 100%;
   align-self: flex-start;
   white-space: nowrap;
+  margin-right: -5px;
+  margin-left: 10px;
 }
 .m-message--button {
   border: none;
@@ -80,10 +87,12 @@
   line-height: 20px;
   text-align: center;
   vertical-align: middle;
-  background: #ccc;
 }
 .m-message--button:hover {
   color: #F56C6C;
+}
+.m-message--arrow-down.is-collapsed {
+  transform: rotate(90deg);
 }
 .m-message-fade-enter-active {
   animation: m-message-fade-in 0.3s;

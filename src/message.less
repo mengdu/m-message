@@ -15,7 +15,7 @@
   overflow: hidden;
   border-radius: 4px;
   box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  box-shadow: 0 1px 8px rgba(0,0,0,.15);
   color: rgba(0,0,0,.65);
   background: rgba(255,255,255,0.95);
   pointer-events: all;
@@ -38,21 +38,26 @@
   &--icon {
     float: left;
     box-sizing: border-box;
-    margin-right: 5px;
+    margin-right: 10px;
   }
   &--title {
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  &--content {
+  &-content {
     box-sizing: border-box;
     overflow: auto;
-    padding: 5px;
     width: 100%;
+  }
+  &--description {
+    line-height: 1.6;
+    color: #777;
+  }
+  &--title + &--description {
+    margin-top: 5px;
   }
 
   &-icon-img {
@@ -67,6 +72,8 @@
     height: 100%;
     align-self: flex-start;
     white-space: nowrap;
+    margin-right: -5px;
+    margin-left: 10px;
   }
   &--button {
     border: none;
@@ -82,9 +89,14 @@
     line-height: 20px;
     text-align: center;
     vertical-align: middle;
-    background: #ccc;
+
     &:hover {
       color: #F56C6C;
+    }
+  }
+  &--arrow-down {
+    &.is-collapsed {
+      transform: rotate(90deg);
     }
   }
 }

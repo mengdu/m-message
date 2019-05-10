@@ -1,4 +1,4 @@
-import MessageTemplate from './message.vue'
+import MessageTemplate from './message-template'
 import Vue from 'vue'
 const MessageConstructor = Vue.extend(MessageTemplate)
 

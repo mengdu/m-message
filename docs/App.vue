@@ -26,8 +26,14 @@
       </ul>
     </main>
     <main class="doc-block">
-      <readme></readme>
-      <Doc/>
+      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" title="This is message title. 测试标题" />
+      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" can-close/>
+
+      <div style="display: inline-block;">
+        <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="你好，这是测试信息 ！" title="测试标题" can-close/>
+      </div>
+      <!-- <readme></readme> -->
+      <!-- <Doc/> -->
       <!-- <m-button @click="show">show</m-button>
       <m-button @click="$message({type: 'info', message: '提示信息'})" type="info">info</m-button>
       <m-button @click="$message({type: 'error', message: '提示信息'})" type="danger">error</m-button>
@@ -52,6 +58,7 @@ import errorIcon from '../src/assets/error.svg'
 import warningIcon from '../src/assets/warning.svg'
 import loadingIcon from '../src/assets/loading.svg'
 import Icon from '../src/icon'
+import { MMessage } from '../src'
 
 export default {
   name: 'App',
@@ -60,7 +67,8 @@ export default {
     LayoutFooter,
     ForkLink,
     Readme,
-    Icon
+    Icon,
+    MMessage
   },
   data () {
     return {
@@ -105,13 +113,13 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-      this.$message({
-        message: 'Wellcome to here !',
-        iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
-        duration: -1
-      })
-    }, 2000)
+    // setTimeout(() => {
+    //   this.$message({
+    //     message: 'Wellcome to here !',
+    //     iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
+    //     duration: -1
+    //   })
+    // }, 2000)
   }
 }
 </script>

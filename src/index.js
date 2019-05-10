@@ -1,4 +1,6 @@
 import Message from './message.js'
+import MessageComponent from './message.vue'
+
 import './message.less'
 
 Message.install = function (Vue, options) {
@@ -9,4 +11,5 @@ Message.install = function (Vue, options) {
   }
 }
 
+export const MMessage = MessageComponent
 export default Message

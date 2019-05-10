@@ -8,8 +8,8 @@
   pointer-events: none;
 }
 .m-message {
-  display: inline-block;
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
   padding: 10px 16px;
   font-size: 14px;
   overflow: hidden;
@@ -34,40 +34,55 @@
   pointer-events: all;
   background: rgba(255, 255, 255, 0.151);
 }
-.m-message-type-img {
+.m-message--icon {
+  float: left;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+.m-message--title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m-message--content {
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 5px;
+  width: 100%;
+}
+.m-message-icon-img {
   width: 25px;
   height: 25px;
   vertical-align: middle;
-  margin-left: -30px;
   display: inline-block;
   border-radius: 50%;
 }
-.m-message .m-message-wrap {
-  max-width: 500px;
-  padding-left: 30px;
+.m-message--control {
+  position: relative;
+  height: 100%;
+  align-self: flex-start;
+  white-space: nowrap;
 }
-.m-message .m-message-content {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
-  word-break: break-all;
-  line-height: 25px;
-  padding-left: 5px;
-}
-.m-message__close {
+.m-message--button {
   border: none;
   outline: none;
   background: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 15px;
   color: #646464;
   font-weight: 600;
-  margin-left: 10px;
-  margin-right: -7px;
+  padding: 0;
   width: 20px;
   height: 20px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  background: #ccc;
 }
-.m-message__close:hover {
+.m-message--button:hover {
   color: #F56C6C;
 }
 .m-message-fade-enter-active {

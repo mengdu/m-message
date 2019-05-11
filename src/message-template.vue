@@ -1,25 +1,19 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div class="m-message-wrapper"
-    v-show="show"
-    :style="{
-      zIndex: wrapperzIndex
-    }"
-    :class="{
-      'm-message-center': align === 'center'
-    }">
+  <div class="m-message-wrapper" v-show="show">
     <message
       :class="[type && 'm-message--' + type]"
       @mouseenter.native="clearTimer"
       @mouseleave.native="startTimer"
       :content="message"
       :closable="showClose"
-      :is-collapsed="false"
+      :is-collapsed="isCollapsed"
       :close-handler="close"
+      :title="title"
       >
       <template slot="icon">
         <img v-if="iconImg" :src="iconImg" class="m-message--icon"/>
-        <icon v-else :name="type" class="m-message--icon" />
+        <icon v-else-if="type" :name="type" class="m-message--icon" />
       </template>
       </message>
   </div>
@@ -36,19 +30,14 @@ export default {
       show: false,
       type: 'info',
       iconImg: '',
+      title: '',
       message: '',
       duration: 3000,
       showClose: false,
+      isCollapsed: false,
       onClose: null,
       timer: null,
-      closed: false,
-      align: '',
-      zIndex: ''
-    }
-  },
-  computed: {
-    wrapperzIndex () {
-      return (this.align === 'center' && this.zIndex) ? this.zIndex : false
+      closed: false
     }
   },
   watch: {

@@ -1,8 +1,13 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div class="m-message-wrapper" v-show="show">
+  <div class="m-message-wrapper" v-show="show"
+    :style="{
+      width: wrapperWidth
+    }"
+    :class="wrapperClassName"
+    >
     <message
-      :class="[type && 'm-message--' + type]"
+      :class="[type && 'm-message--' + type, className]"
       @mouseenter.native="clearTimer"
       @mouseleave.native="startTimer"
       :content="message"
@@ -35,6 +40,9 @@ export default {
       duration: 3000,
       showClose: false,
       isCollapsed: false,
+      wrapperWidth: '',
+      className: '',
+      wrapperClassName: '',
       onClose: null,
       timer: null,
       closed: false

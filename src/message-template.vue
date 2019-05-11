@@ -1,34 +1,36 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div v-show="show" class="m-message-wrapper"
+  <div class="m-message-wrapper"
+    v-show="show"
     :style="{
       zIndex: wrapperzIndex
     }"
     :class="{
       'm-message-center': align === 'center'
     }">
-    <div
-      :class="['m-message', type && 'm-message-' + type]"
-      @mouseenter="clearTimer"
-      @mouseleave="startTimer"
+    <message
+      :class="[type && 'm-message--' + type]"
+      @mouseenter.native="clearTimer"
+      @mouseleave.native="startTimer"
+      :content="message"
+      :closable="showClose"
+      :is-collapsed="false"
+      :close-handler="close"
       >
-      <div class="m-message-wrap">
-        <img v-if="iconImg" :src="iconImg" class="m-message-type-img"/>
-        <icon v-else :name="type" class="m-message-type-img" />
-        <div class="m-message-content">
-          <span>{{message}}</span>
-          <button class="m-message__close" @click="close" v-if="showClose"><span>×</span></button>
-        </div>
-      </div>
-    </div>
+      <template slot="icon">
+        <img v-if="iconImg" :src="iconImg" class="m-message--icon"/>
+        <icon v-else :name="type" class="m-message--icon" />
+      </template>
+      </message>
   </div>
 </transition>
 </template>
 <script>
+import Message from './message.vue'
 import Icon from './icon'
 
 export default {
-  components: { Icon },
+  components: { Icon, Message },
   data () {
     return {
       show: false,

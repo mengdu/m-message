@@ -6,10 +6,52 @@
   flex-direction: column;
   box-sizing: border-box;
   padding: 15px;
+}
+.m-message-container.is-top-left,
+.m-message-container.is-top-center,
+.m-message-container.is-top-right {
   width: 100%;
   top: 0;
   left: 0;
+}
+.m-message-container.is-top-left {
+  align-items: flex-start;
+}
+.m-message-container.is-top-center {
   align-items: center;
+}
+.m-message-container.is-top-right {
+  align-items: flex-end;
+}
+.m-message-container.is-center {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+.m-message-container.is-bottom-left,
+.m-message-container.is-bottom-center,
+.m-message-container.is-bottom-right {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.m-message-container.is-bottom-left {
+  align-items: flex-start;
+}
+.m-message-container.is-bottom-center {
+  align-items: center;
+}
+.m-message-container.is-bottom-right {
+  align-items: flex-end;
+}
+.m-message-container.has-mask {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
 }
 .m-message-wrapper {
   display: inline-block;
@@ -98,12 +140,12 @@
   transform: rotate(90deg);
 }
 .m-message-fade-enter-active {
-  animation: m-message-fade-in 0.3s;
+  animation: m-message-fade-in-down 0.3s;
 }
 .m-message-fade-leave-active {
   animation: m-message-fade-out 0.3s;
 }
-@keyframes m-message-fade-in {
+@keyframes m-message-fade-in-down {
   0% {
     opacity: 0;
     transform: translateY(-20px);

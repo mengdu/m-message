@@ -1,7 +1,7 @@
 <template>
   <div class="m-message" v-show="visible">
-    <div class="m-message--icon" v-if="iconImg || $slots.icon">
-      <img :src="iconImg" v-if="iconImg" class="m-message-icon-img"/>
+    <div class="m-message-icons" v-if="iconImg || $slots.icon">
+      <img :src="iconImg" v-if="iconImg" class="m-message--icon"/>
       <slot name="icon" v-else></slot>
     </div>
     <div class="m-message-content">

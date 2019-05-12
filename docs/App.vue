@@ -17,30 +17,40 @@
       </div>
     </header>
     <main class="doc-block">
+      <div>
+        <select v-model="position" class="m-input">
+          <option v-for="item in positions" :key="item" :value="item">{{item}}</option>
+        </select>
+        <m-button type="danger" @click="$message.closeAll()">CloseAll</m-button>
+      </div>
+      <p></p>
       <ul class="status-icons">
-        <li @click="$message.info({duration: 0, message: 'Info message !'})"><icon name="info" class="status-icon"/> <span class="icon-type" >Info</span></li>
-        <li @click="$message.success('Success message !')"><icon name="success" class="status-icon"/> <span class="icon-type">Success</span></li>
-        <li @click="$message.error('Error message !')"><icon name="error" class="status-icon"/> <span class="icon-type">Error</span></li>
-        <li @click="$message.warning('Warning message !')"><icon name="warning" class="status-icon"/> <span class="icon-type">Warning</span></li>
-        <li @click="$message.loading('Loading message !')"><icon name="loading" class="status-icon"/> <span class="icon-type">Loading</span></li>
+        <li @click="handleMessage('info')"><icon name="info" class="status-icon"/> <span class="icon-type" >Info</span></li>
+        <li @click="handleMessage('success')"><icon name="success" class="status-icon"/> <span class="icon-type">Success</span></li>
+        <li @click="handleMessage('error')"><icon name="error" class="status-icon"/> <span class="icon-type">Error</span></li>
+        <li @click="handleMessage('warning')"><icon name="warning" class="status-icon"/> <span class="icon-type">Warning</span></li>
+        <li @click="handleMessage('loading')"><icon name="loading" class="status-icon"/> <span class="icon-type">Loading</span></li>
       </ul>
     </main>
     <main class="doc-block">
       <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" title="This is message title. 测试标题" />
-      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" can-close/>
-
+      <p></p>
+      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" closable :is-collapsed="false"/>
+      <p></p>
       <div style="display: inline-block;">
-        <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="你好，这是测试信息 ！" title="测试标题" can-close/>
+        <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="你好，这是测试信息 ！" title="测试标题" closable :is-collapsed="false"/>
       </div>
+      <p></p>
+      <m-message title="将进酒 - 李白" closable>
+        <icon name="info" class="m-message--icon" slot="icon" />
+      君不见，黄河之水天上来，奔流到海不复回。 君不见，高堂明镜悲白发，朝如青丝暮成雪。
+      人生得意须尽欢，莫使金樽空对月。 
+      天生我材必有用，千金散尽还复来。 
+      烹羊宰牛且为乐，会须一饮三百杯。 
+      岑夫子，丹丘生，将进酒，杯莫停。 
+      </m-message>
       <!-- <readme></readme> -->
       <!-- <Doc/> -->
-      <!-- <m-button @click="show">show</m-button>
-      <m-button @click="$message({type: 'info', message: '提示信息'})" type="info">info</m-button>
-      <m-button @click="$message({type: 'error', message: '提示信息'})" type="danger">error</m-button>
-      <m-button @click="$message({type: 'success', message: '提示信息'})" type="success">success</m-button>
-      <m-button @click="$message({type: 'warning', message: '提示信息'})" type="warning">warning</m-button>
-      <m-button @click="loading" type="primary">loading</m-button>
-      <m-button @click="handleDemo" type="primary">具有遮罩的提示</m-button> -->
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -52,11 +62,6 @@ import ForkLink from './components/fork-link'
 import Doc from './doc.md'
 import Readme from '~/README.md'
 import pkg from '~/package.json'
-import infoIcon from '../src/assets/info.svg'
-import successIcon from '../src/assets/success.svg'
-import errorIcon from '../src/assets/error.svg'
-import warningIcon from '../src/assets/warning.svg'
-import loadingIcon from '../src/assets/loading.svg'
 import Icon from '../src/icon'
 import { MMessage } from '../src'
 
@@ -73,11 +78,16 @@ export default {
   data () {
     return {
       pkg,
-      infoIcon,
-      successIcon,
-      errorIcon,
-      warningIcon,
-      loadingIcon
+      positions: [
+        'top-left',
+        'top-center',
+        'top-right',
+        'center',
+        'bottom-left',
+        'bottom-center',
+        'bottom-right'
+      ],
+      position: 'top-center',
     }
   },
   computed: {
@@ -86,30 +96,12 @@ export default {
     }
   },
   methods: {
-    show () {
+    handleMessage (type) {
       this.$message({
-        type: 'success',
-        duration: -1,
-        message: 'this is a test.',
-        zIndex: 2000
+        type: type,
+        position: this.position,
+        message: type.replace(/^[a-z]/, (ch) => ch.toLocaleUpperCase()) + ' message !'
       })
-    },
-    loading () {
-      this.$message({
-        type: 'loading',
-        message: 'Loading...',
-
-      })
-    },
-    handleDemo () {
-      let l = this.$message.loading({
-        message: '请求处理中...',
-        align: 'center'
-      })
-
-      setTimeout(function () {
-        l.close()
-      }, 5000)
     }
   },
   mounted () {

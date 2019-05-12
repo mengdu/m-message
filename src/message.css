@@ -55,6 +55,7 @@
 }
 .m-message-wrapper {
   display: inline-block;
+  max-width: 500px;
 }
 .m-message-wrapper + .m-message-wrapper {
   margin-top: 15px;

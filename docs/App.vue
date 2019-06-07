@@ -26,28 +26,36 @@
       <p></p>
       <ul class="status-icons">
         <li @click="handleMessage('info')"><icon name="info" class="status-icon"/> <span class="icon-type" >Info</span></li>
-        <li @click="handleMessage('success')"><icon name="success" class="status-icon"/> <span class="icon-type">Success</span></li>
-        <li @click="handleMessage('error')"><icon name="error" class="status-icon"/> <span class="icon-type">Error</span></li>
+        <li @click="handleMessage('success',{duration: -1})"><icon name="success" class="status-icon"/> <span class="icon-type">Success and persist</span></li>
+        <li @click="handleMessage('error',{title: 'oops'})"><icon name="error" class="status-icon"/> <span class="icon-type">Error and more info</span></li>
         <li @click="handleMessage('warning')"><icon name="warning" class="status-icon"/> <span class="icon-type">Warning</span></li>
         <li @click="handleMessage('loading')"><icon name="loading" class="status-icon"/> <span class="icon-type">Loading</span></li>
       </ul>
+      <p>notify, default not auto close</p>
+      <ul class="status-icons">
+        <li @click="handleNotify('info', {autoClose:true})"><icon name="info" class="status-icon"/> <span class="icon-type" >Info and auto close</span></li>
+        <li @click="handleNotify('success', {title: null})"><icon name="success" class="status-icon"/> <span class="icon-type">Success without title</span></li>
+        <li @click="handleNotify('error', {onOk: null})"><icon name="error" class="status-icon"/> <span class="icon-type">Error without ok button</span></li>
+        <li @click="handleNotify('warning', {okText:'sure!', closeText:'thanks'})"><icon name="warning" class="status-icon"/> <span class="icon-type">Warning with custom button text</span></li>
+        <li @click="handleNotify('loading')"><icon name="loading" class="status-icon"/> <span class="icon-type">Loading</span></li>
+      </ul>
     </main>
     <main class="doc-block">
-      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" title="This is message title. 测试标题" />
+      <m-message :iconImg="iconImg" content="Hello World !" title="This is message title. 默认展开" />
       <p></p>
-      <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="Hello World !" closable :is-collapsed="false"/>
+      <m-message :iconImg="iconImg" content="Hello World ! 没有折叠按钮"/>
       <p></p>
       <div style="display: inline-block;">
-        <m-message iconImg="https://avatars1.githubusercontent.com/u/11366654?s=40&v=4" content="你好，这是测试信息 ！" title="测试标题" closable :is-collapsed="false"/>
+        <m-message :iconImg="iconImg" content="你好，这是测试信息 ！" title="折叠的" showClose fold/>
       </div>
       <p></p>
-      <m-message title="将进酒 - 李白" closable>
-        <icon name="info" class="m-message--icon" slot="icon" />
+      <m-message title="将进酒 - 李白">
+        <icon name="info" class="m-message--icon" slot="icon"/>
       君不见，黄河之水天上来，奔流到海不复回。 君不见，高堂明镜悲白发，朝如青丝暮成雪。
-      人生得意须尽欢，莫使金樽空对月。 
-      天生我材必有用，千金散尽还复来。 
-      烹羊宰牛且为乐，会须一饮三百杯。 
-      岑夫子，丹丘生，将进酒，杯莫停。 
+      人生得意须尽欢，莫使金樽空对月。
+      天生我材必有用，千金散尽还复来。
+      烹羊宰牛且为乐，会须一饮三百杯。
+      岑夫子，丹丘生，将进酒，杯莫停。
       </m-message>
       <!-- <readme></readme> -->
       <!-- <Doc/> -->
@@ -77,6 +85,7 @@ export default {
   },
   data () {
     return {
+      iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
       pkg,
       positions: [
         'top-left',
@@ -87,7 +96,7 @@ export default {
         'bottom-center',
         'bottom-right'
       ],
-      position: 'top-center',
+      position: 'top-center'
     }
   },
   computed: {
@@ -96,11 +105,38 @@ export default {
     }
   },
   methods: {
-    handleMessage (type) {
+    handleMessage (type, option) {
       this.$message({
         type: type,
         position: this.position,
-        message: type.replace(/^[a-z]/, (ch) => ch.toLocaleUpperCase()) + ' message !'
+        content: type.replace(/^[a-z]/, (ch) => ch.toLocaleUpperCase()) + ' message !',
+        ...option
+      })
+    },
+    handleNotify (type, option) {
+      this.$message.notify({
+        type: type,
+        iconImg: this.iconImg,
+        title: 'Want a story?',
+        position: this.position,
+        onOk: this.onOk,
+        onClose: this.onClose,
+        content: 'Once upon a time, there is a long long stroy~',
+        ...option
+      })
+    },
+    onOk (close) {
+      this.$message({
+        type: 'success',
+        position: 'top-center',
+        content: 'wise choice!'
+      })
+    },
+    onClose (close) {
+      this.$message({
+        type: 'warning',
+        position: 'top-center',
+        content: 'what a pity!'
       })
     }
   },

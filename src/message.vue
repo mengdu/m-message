@@ -22,7 +22,7 @@
       </button>
       <button class="m-message--button m-message--close"
         v-if="closable"
-        @click="handleClose">
+        @click="close">
         <svg viewBox="0 0 35 35" width="20" height="20" version="1.1" fill="currentColor">
           <path d="M19.5,17.5l5.1,5.1l-2,2l-5.1-5.1l-5.1,5.1l-2-2l5.1-5.1l-5.1-5.1l2-2l5.1,5.1l5.1-5.1l2,2L19.5,17.5z"></path>
         </svg>
@@ -36,19 +36,22 @@ export default {
   name: 'm-message',
   props: {
     iconImg: String,
-    closable: Boolean,
-    closeHandler: Function,
+    showClose: Boolean,
+    autoClose: Boolean,
+    onClose: Function,
+    closeWrapper: Function,
     title: String,
     content: String,
-    isCollapsed: {
+    fold: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data () {
     return {
       visible: true,
-      collapsed: this.isCollapsed
+      closable: this.showClose || !this.autoClose,
+      collapsed: this.fold
     }
   },
   methods: {
@@ -57,10 +60,11 @@ export default {
     },
     close () {
       this.visible = false
-    },
-    handleClose () {
-      if (typeof this.closeHandler === 'function') this.closeHandler(this.close)
-      else this.close()
+      let doClose = () => {}
+      // onClose -> userOnClose, closeWrapper -> close from wrapper
+      if (typeof this.onClose === 'function') doClose = this.onClose
+      if (typeof this.closeWrapper === 'function') doClose = this.closeWrapper
+      doClose()
     }
   }
 }

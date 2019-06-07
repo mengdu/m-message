@@ -1,51 +1,44 @@
 <template>
 <transition name="m-message-fade" mode="in-out">
-  <div class="m-message-wrapper" v-show="show"
-    :style="{
-      width: wrapperWidth
-    }"
+  <div class="m-message-wrapper"
+    v-show="!closed"
+    :style="{ width: wrapperWidth }"
     :class="wrapperClassName"
-    >
-    <message
+  >
+    <component
+      v-bind="$options.options"
+      :is="component"
       :class="[type && 'm-message--' + type, className]"
       @mouseenter.native="clearTimer"
       @mouseleave.native="startTimer"
-      :content="message"
-      :closable="showClose"
-      :is-collapsed="isCollapsed"
-      :close-handler="close"
-      :title="title"
-      >
+      :close-wrapper="close"
+    >
       <template slot="icon">
         <img v-if="iconImg" :src="iconImg" class="m-message--icon"/>
         <icon v-else-if="type" :name="type" class="m-message--icon" />
       </template>
-      </message>
+    </component>
   </div>
 </transition>
 </template>
 <script>
-import Message from './message.vue'
 import Icon from './icon'
 
 export default {
-  components: { Icon, Message },
+  components: { Icon },
   data () {
     return {
-      show: false,
       type: 'info',
       iconImg: '',
-      title: '',
-      message: '',
+      component: this.$options.component,
       duration: 3000,
-      showClose: false,
-      isCollapsed: false,
+      autoClose: true,
       wrapperWidth: '',
       className: '',
       wrapperClassName: '',
-      onClose: null,
       timer: null,
-      closed: false
+      closed: false,
+      onClose: null
     }
   },
   watch: {
@@ -57,17 +50,15 @@ export default {
     }
   },
   methods: {
-    close () {
+    close (fnKey) {
       this.closed = true
-      if (typeof this.onClose === 'function') {
-        this.onClose(this)
-      }
+      this[fnKey || 'onClose']()
     },
     clearTimer () {
       clearTimeout(this.timer)
     },
     startTimer () {
-      if (this.duration > 0 && this.type !== 'loading') {
+      if (this.autoClose && this.duration > 0) {
         this.timer = setTimeout(() => {
           if (!this.closed) {
             this.close()
@@ -82,11 +73,8 @@ export default {
     }
   },
   mounted () {
-    if (this.type !== 'loading') {
+    if (this.autoClose && this.duration > 0) {
       this.startTimer()
-      if (this.duration <= 0) {
-        this.showClose = true
-      }
     }
   }
 }

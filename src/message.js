@@ -1,6 +1,9 @@
 import MessageTemplate from './message-template'
 import Vue from 'vue'
-const MessageConstructor = Vue.extend(MessageTemplate)
+import MessageComponent from './message.vue'
+import NotifyComponent from './notify.vue'
+
+const MessageFactory = Vue.extend(MessageTemplate)
 
 const instances = []
 let count = 1
@@ -32,9 +35,11 @@ const Message = function (options) {
     Message.close(id, userOnClose)
   }
 
-  const instance = new MessageConstructor({
+  const instance = new MessageFactory({
     el: document.createElement('div'),
-    data: options
+    data: options,
+    component: options.component || MessageComponent,
+    options
   })
 
   instance.id = id
@@ -103,8 +108,14 @@ const types = [ 'info', 'success', 'error', 'warning', 'loading' ]
 types.forEach(type => {
   Message[type] = function (options) {
     options = typeof options === 'string' ? { message: options } : options
-    return Message({ ...options, type })
+    const autoClose = type !== 'loading'
+    return Message({ ...options, type, autoClose })
   }
 })
+
+// user can extend with custom Component, options will passed as `$options.options`
+Message.notify = function (options) {
+  return Message({ component: NotifyComponent, autoClose: false, ...options })
+}
 
 export default Message

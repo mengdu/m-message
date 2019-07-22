@@ -52,4 +52,4 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 | options.zIndex   |  z-index   | number | —  |   1010   |
 | options.iconImg   | Img icon URL  | string | —  |   —   |
 | options.hasMask   | Has mask wrapper  | boolean | —  |  false   |
-| options.position   | Message display position   | string | 'top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right' |  'top-center'   |
+| options.position   | Message display position   | string | 'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' |

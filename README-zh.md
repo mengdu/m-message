@@ -53,4 +53,4 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 | options.zIndex   |  堆叠顺序   | number | —  |    1010   |
 | options.iconImg   | 图片图标url  | string | —  |   —   |
 | options.hasMask   | 是否含有遮罩层  | boolean | —  |  false   |
-| options.position   | 消息展示位置  | string | 'top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right' |  'top-center'   |
+| options.position   | 消息展示位置  | string | 'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' |

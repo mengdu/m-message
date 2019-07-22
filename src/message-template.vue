@@ -15,6 +15,7 @@
       :is-collapsed="isCollapsed"
       :close-handler="close"
       :title="title"
+      :supportHTML="supportHTML"
       >
       <template slot="icon">
         <img v-if="iconImg" :src="iconImg" class="m-message--icon"/>
@@ -43,6 +44,7 @@ export default {
       wrapperWidth: '',
       className: '',
       wrapperClassName: '',
+      supportHTML: false,
       onClose: null,
       timer: null,
       closed: false

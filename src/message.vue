@@ -6,7 +6,12 @@
     </div>
     <div class="m-message-content">
       <div class="m-message--title" v-if="title || $slots.title"><slot name="title">{{ title }}</slot></div>
-      <div class="m-message--description" v-if="!collapsed"><slot>{{ content }}</slot></div>
+      <template v-if="supportHTML">
+        <div class="m-message--description" v-if="!collapsed" v-html="content"><slot></slot></div>
+      </template>
+      <template v-else>
+        <div class="m-message--description" v-if="!collapsed"><slot>{{ content }}</slot></div>
+      </template>
     </div>
     <div class="m-message--control">
       <slot name="button"></slot>
@@ -40,6 +45,7 @@ export default {
     closeHandler: Function,
     title: String,
     content: String,
+    supportHTML: false, // content support html
     isCollapsed: {
       type: Boolean,
       default: true

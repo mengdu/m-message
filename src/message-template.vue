@@ -2,7 +2,7 @@
 <transition name="m-message-fade" mode="in-out">
   <div class="m-message-wrapper" v-show="show"
     :style="{
-      width: wrapperWidth
+      width: width
     }"
     :class="wrapperClassName"
     >
@@ -41,7 +41,7 @@ export default {
       duration: 3000,
       showClose: false,
       isCollapsed: false,
-      wrapperWidth: '',
+      width: '',
       className: '',
       wrapperClassName: '',
       supportHTML: false,

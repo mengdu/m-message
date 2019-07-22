@@ -45,7 +45,8 @@
       handleCenterLoading () {
         let l = this.$message.loading({
           message: '居中显示...',
-          align: 'center'
+          position: 'center',
+          hasMask: true
         })
         setTimeout(function () {
           l.close()
@@ -78,8 +79,8 @@
       handleCenterLoading () {
         let l = this.$message.loading({
           message: '居中显示...',
-          align: 'center',
-          showClose: true
+          position: 'center',
+          hasMask: true
         })
         setTimeout(function () {
           l.close()

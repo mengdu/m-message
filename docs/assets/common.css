@@ -63,6 +63,7 @@ code {
 .doc-block table {
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
   background-color: #fff;
   font-size: 14px;
   margin-bottom: 45px;
@@ -103,6 +104,9 @@ code {
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 3px;
+}
+.doc-block img {
+  max-width: 100%;
 }
 
 .m-input-block,.m-input-block m-input {

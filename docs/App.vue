@@ -49,8 +49,8 @@
       烹羊宰牛且为乐，会须一饮三百杯。 
       岑夫子，丹丘生，将进酒，杯莫停。 
       </m-message>
-      <!-- <readme></readme> -->
-      <!-- <Doc/> -->
+      <readme></readme>
+      <Doc/>
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -64,6 +64,7 @@ import Readme from '~/README.md'
 import pkg from '~/package.json'
 import Icon from '../src/icon'
 import { MMessage } from '../src'
+import { truncate } from 'fs';
 
 export default {
   name: 'App',
@@ -100,18 +101,19 @@ export default {
       this.$message({
         type: type,
         position: this.position,
+        // duration: -1,
         message: type.replace(/^[a-z]/, (ch) => ch.toLocaleUpperCase()) + ' message !'
       })
     }
   },
   mounted () {
-    // setTimeout(() => {
-    //   this.$message({
-    //     message: 'Wellcome to here !',
-    //     iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
-    //     duration: -1
-    //   })
-    // }, 2000)
+    setTimeout(() => {
+      this.$message({
+        message: 'Wellcome to here !',
+        iconImg: 'https://avatars1.githubusercontent.com/u/11366654?s=40&v=4',
+        duration: -1
+      })
+    }, 2000)
   }
 }
 </script>

@@ -1,13 +1,16 @@
 # m-message
 
-A message plugin for vue.
+A message plugin base on Vue.
 
-> Refer to the implementation of ElementUI [message](https://github.com/ElemeFE/element/blob/dev/packages/message/index.js) component.
-> Style reference [ant-message](https://ant.design/components/message-cn/) component
+[中文文档](README-zh.md) | [Live Demo](https://mengdu.github.io/m-message/example/)
 
-[中文文档](README-zh.md)
 
-[Live Demo](https://mengdu.github.io/m-message/example/)
+<div align="center">
+
+![](./20190722111215.png)
+
+![](./20190722111342.png)
+</div>
 
 
 
@@ -15,10 +18,8 @@ A message plugin for vue.
 import Message from 'vue-m-message'
 
 Vue.use(Message) // will mount `Vue.prototype.$message`
-```
-
-```js
-Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
+// or
+Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 ```
 
 
@@ -30,18 +31,25 @@ Vue.use(Message, {name: 'msg'}) // will mount `Vue.prototype.$msg`
 + **Massage.error(msg|options)** `Error` type message
 + **Massage.warning(msg|options)** `Warning` type message
 + **Massage.loading(msg|options)** `Loading` type message
-
++ **Message.closeAll()** Close all message
 
 # options
 
 |   Attribute    | Description    | Type      | Accepted Values       | Default   |
 |---------- |-------- |---------- |-------------  |-------- |
-| options   | message options   | object | —  |    —   |
-| options.type   |  message type  | string | 'info', 'success', 'error', 'warning', 'loading'  |   info   |
-| options.message   |  message content  | string | —  |    ''   |
-| options.showClose   |  show close button  | false/true | —  |   false   |
-| options.onClose   |  close callback function   | function | —  |    —   |
-| options.duration   |  message display duration, unit ms, -1 not closed  | number | —  |   3000   |
+| options   | Message options   | object | —  |    —   |
+| options.type   |  Message type  | string | 'info', 'success', 'error', 'warning', 'loading'  |   info   |
+| options.title   |  Message title  | string | —  |    ''   |
+| options.message   |  Message content  | string | —  |    ''   |
+| options.isCollapsed   |  Folding message  | boolean | —  |   false   |
+| options.width   |  Message block width; default auto width  | string | —  |  ''  |
+| options.className   |  Class name for message block  | string | — |  — |
+| options.wrapperClassName   |  Class name form wrapper  | string | — |  — |
+| options.supportHTML   |  Message support HTML  | boolean | — | false |
+| options.showClose   |  Show close button  | false/true | —  |   false   |
+| options.onClose   |  Close callback function   | function | —  |    —   |
+| options.duration   |  Message display duration, unit ms, -1 not closed  | number | —  |   3000   |
 | options.zIndex   |  z-index   | number | —  |   1010   |
-| options.align   |  show position   | string | center  |   空   |
 | options.iconImg   | Img icon URL  | string | —  |   —   |
+| options.hasMask   | Has mask wrapper  | boolean | —  |  false   |
+| options.position   | Message display position   | string | 'top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right' |  'top-center'   |

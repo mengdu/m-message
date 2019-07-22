@@ -18,9 +18,9 @@
       >
       <template slot="icon">
         <img v-if="iconImg" :src="iconImg" class="m-message--icon"/>
-        <icon v-else-if="type" :name="type" class="m-message--icon" />
+        <icon v-else-if="type" :name="type" class="m-message--icon"/>
       </template>
-      </message>
+    </message>
   </div>
 </transition>
 </template>

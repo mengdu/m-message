@@ -27,11 +27,11 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 ## Message API
 
 + **Message(options)** 显示信息
-+ **Massage.info(msg | options)** 普通信息
-+ **Massage.success(msg | options)** 成功信息
-+ **Massage.error(msg | options)** 错误信息
-+ **Massage.warning(msg | options)** 警告信息
-+ **Massage.loading(msg | options)** 加载信息
++ **Message.info(msg | options)** 普通信息
++ **Message.success(msg | options)** 成功信息
++ **Message.error(msg | options)** 错误信息
++ **Message.warning(msg | options)** 警告信息
++ **Message.loading(msg | options)** 加载信息
 + **Message.closeAll()** 清空所有消息
 
 ## options

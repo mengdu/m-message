@@ -26,11 +26,11 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 # Message API
 
 + **Message(options)** Show a message
-+ **Massage.info(msg|options)** `Info` type message
-+ **Massage.success(msg|options)** `Success` type message
-+ **Massage.error(msg|options)** `Error` type message
-+ **Massage.warning(msg|options)** `Warning` type message
-+ **Massage.loading(msg|options)** `Loading` type message
++ **Message.info(msg|options)** `Info` type message
++ **Message.success(msg|options)** `Success` type message
++ **Message.error(msg|options)** `Error` type message
++ **Message.warning(msg|options)** `Warning` type message
++ **Message.loading(msg|options)** `Loading` type message
 + **Message.closeAll()** Close all message
 
 # options

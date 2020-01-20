@@ -2,7 +2,7 @@
 
 A message plugin base on Vue.
 
-[中文文档](README-zh.md) | [Live Demo](https://mengdu.github.io/m-message/example/)
+[中文文档](README-zh.md) | [Live Demo](https://mengdu.github.io/m-message/index.html)
 
 
 <div align="center">

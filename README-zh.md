@@ -3,7 +3,7 @@
 基于 Vue 的信息提示插件。
 
 
-[English Docs](README.md) | [Live Demo](https://mengdu.github.io/m-message/example/)
+[English Docs](README.md) | [Live Demo](https://mengdu.github.io/m-message/index.html)
 
 
 

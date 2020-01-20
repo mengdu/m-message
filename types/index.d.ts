@@ -19,7 +19,7 @@ export interface MessageOptions {
 }
 
 export declare class MessageComponent extends Vue {
-  id: number;
+  readonly id: number;
   close (): void;
   message: string;
   title?: string;

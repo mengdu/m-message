@@ -22,6 +22,7 @@
     "url": "https://github.com/mengdu/m-message/issues"
   },
   "keywords": [
+    "vue-m-message",
     "m-message"
   ],
   "homepage": "https://mengdu.github.io/m-message/index.html",
@@ -32,6 +33,7 @@
   "files": [
     "src",
     "dist",
+    "types",
     "README-zh.md"
   ],
   "devDependencies": {

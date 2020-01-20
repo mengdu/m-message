@@ -4,6 +4,7 @@
   "description": "A message plugin base on Vue",
   "license": "MIT",
   "main": "dist/index.umd.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build:docs": "vue-cli-service build",

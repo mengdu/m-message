@@ -16,10 +16,12 @@ const Icon = {
       return icons[this.name]
     }
   },
+  // eslint-disable-next-line
   render (h) {
     const svg = this.svg
 
     if (!svg) {
+      // eslint-disable-next-line
       console.warn(`The name of '${this.name}' could not be found.`)
       return <span class="m-svg-icon"></span>
     }

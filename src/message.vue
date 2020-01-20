@@ -45,7 +45,7 @@ export default {
     closeHandler: Function,
     title: String,
     content: String,
-    supportHTML: false, // content support html
+    supportHTML: Boolean, // content support html
     isCollapsed: {
       type: Boolean,
       default: true

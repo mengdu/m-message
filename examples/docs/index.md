@@ -21,6 +21,10 @@
       <option value="bottom-center">bottom-center</option>
       <option value="bottom-right">bottom-right</option>
     </select>
+    <select class="m-input" v-model="hasMask">
+      <option :value="false">No-mask</option>
+      <option :value="true">Has-mask</option>
+    </select>
     <input v-model="msg" class="m-input" />
     <button @click="handleMessage" class="m-btn">Send</button>
   </div>
@@ -31,7 +35,8 @@ export default {
     return {
       type: '',
       position: '',
-      msg: 'This is a test message'
+      msg: 'This is a test message',
+      hasMask: false
     }
   },
   methods: {
@@ -40,7 +45,8 @@ export default {
         type: this.type,
         message: this.msg,
         showClose: true,
-        position: this.position
+        position: this.position,
+        hasMask: this.hasMask
       })
     }
   }

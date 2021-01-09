@@ -65,14 +65,14 @@ Message.close = function (id, userOnClose) {
       instances[i] = null
       instances.splice(i, 1)
 
-      const index = instances.findIndex(function (e) {
-        return e.containerKey === containerKey
-      })
       // 如果开启遮罩，300ms 后移除容器（不移除白屏时间太长）
-      if (hasMask && index === -1) {
+      if (hasMask) {
         setTimeout(function () {
-          containers[containerKey].remove()
-          containers[containerKey] = null
+          const count = instances.filter(e => e.containerKey === containerKey).length
+          if (count === 0 && containers[containerKey]) {
+            containers[containerKey].remove()
+            containers[containerKey] = null
+          }
         }, 300)
       }
       break

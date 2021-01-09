@@ -34,6 +34,7 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 + **Message.warning(msg | options)** 警告信息
 + **Message.loading(msg | options)** 加载信息
 + **Message.closeAll()** 清空所有消息
++ **Message.globals.options[key] = [value]** 全局默认设置，请看 `options`
 
 ## options
 
@@ -43,6 +44,7 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 | options.type   |  消息类型  | string | 'info', 'success', 'error', 'warning', 'loading'  |   info   |
 | options.title   |  消息标题  | string | —  |    ''   |
 | options.message   |  消息内容  | string | —  |    ''   |
+| options.collapsable   |  是否可折叠  | boolean | —  |   true   |
 | options.isCollapsed   |  是否折叠消息内容  | boolean | —  |   false   |
 | options.width   |  消息块宽度，默认自动宽  | string | —  |  ''  |
 | options.showClose   |  显示close按钮  | boolean | false/true |   false   |

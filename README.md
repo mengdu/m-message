@@ -33,6 +33,7 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 + **Message.warning(msg|options)** `Warning` type message
 + **Message.loading(msg|options)** `Loading` type message
 + **Message.closeAll()** Close all message
++ **Message.globals.options[key] = [value]** Global settings; see `options`
 
 # options
 
@@ -42,6 +43,7 @@ Vue.use(Message, { name: 'msg' }) // will mount `Vue.prototype.$msg`
 | options.type   |  Message type  | string | 'info', 'success', 'error', 'warning', 'loading'  |   info   |
 | options.title   |  Message title  | string | —  |    ''   |
 | options.message   |  Message content  | string | —  |    ''   |
+| options.collapsable   |  Collapsable  | boolean | —  |   true   |
 | options.isCollapsed   |  Folding message  | boolean | —  |   false   |
 | options.width   |  Message block width; default auto width  | string | —  |  ''  |
 | options.className   |  Class name for message block  | string | — |  — |

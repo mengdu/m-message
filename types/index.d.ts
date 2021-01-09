@@ -4,17 +4,18 @@ export interface MessageOptions {
   title?: string;
   message: string;
   type?: 'info' | 'success' | 'error' | 'warning' | 'loading';
-  isCollapsed: boolean;
+  isCollapsed?: boolean;
+  collapsable?: boolean;
   width?: string;
   showClose: boolean;
   className?: string;
   wrapperClassName?: string;
   supportHTML?: boolean;
   onClose?: () => void;
-  duration: number | 3000;
-  zIndex: number | 1010;
+  duration?: number; // 3000ms
+  zIndex?: number; // 1010
   iconImg?: string;
-  hasMask: boolean;
+  hasMask?: boolean;
   position?: 'top-left' | 'top-center' | 'top-right' | 'center' | 'bottom-left' | 'bottom-center' | 'bottom-right'
 }
 
@@ -63,6 +64,12 @@ declare namespace Message {
 
   const close: (id: number, userOnClose?: () => void) => void;
   const closeAll: () => void;
+
+  const globals: {
+    options: {
+      [K in keyof MessageOptions]?: MessageOptions[K]
+    }
+  }
 }
 
 declare module 'vue/types/vue' {

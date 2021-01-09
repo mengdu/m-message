@@ -13,6 +13,7 @@
       :content="message"
       :closable="showClose"
       :is-collapsed="isCollapsed"
+      :collapsable="collapsable"
       :close-handler="close"
       :title="title"
       :supportHTML="supportHTML"
@@ -41,6 +42,7 @@ export default {
       duration: 3000,
       showClose: false,
       isCollapsed: false,
+      collapsable: true,
       width: '',
       className: '',
       wrapperClassName: '',

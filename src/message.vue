@@ -16,7 +16,7 @@
     <div class="m-message--control">
       <slot name="button"></slot>
       <button class="m-message--button m-message--arrow-down"
-        v-if="title || $slots.title"
+        v-if="collapsable && (title || $slots.title)"
         :class="{
           'is-collapsed': collapsed
         }"
@@ -47,6 +47,10 @@ export default {
     content: String,
     supportHTML: Boolean, // content support html
     isCollapsed: {
+      type: Boolean,
+      default: true
+    },
+    collapsable: {
       type: Boolean,
       default: true
     }

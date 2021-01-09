@@ -5,8 +5,10 @@ const MessageConstructor = Vue.extend(MessageTemplate)
 const instances = []
 let count = 1
 const containers = {}
+const globalsOptions = {}
 
 const Message = function (options) {
+  options = { ...globalsOptions, ...options }
   let userOnClose = options.onClose
   const position = options.position || 'top-center'
   const hasMask = options.hasMask || false
@@ -96,6 +98,11 @@ Message.closeAll = function () {
   for (let i = instances.length - 1; i >= 0; i--) {
     instances[i].close()
   }
+}
+
+// global options
+Message.globals = {
+  options: globalsOptions
 }
 
 const types = [ 'info', 'success', 'error', 'warning', 'loading' ]

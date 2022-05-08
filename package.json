@@ -1,6 +1,6 @@
 {
   "name": "vue-m-message",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "A message plugin base on Vue",
   "private": false,
   "main": "dist/index.umd.js",

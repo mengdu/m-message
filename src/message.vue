@@ -7,10 +7,10 @@ import Icon from './icon'
 
 function useTimeout(cb: () => void, time: number) {
   const t: Ref<number> = ref(0)
-  t.value = setTimeout(cb, time)
+  t.value = window.setTimeout(cb, time)
   return {
     stop () {
-      clearTimeout(t.value)
+      window.clearTimeout(t.value)
     }
   }
 }

@@ -2,17 +2,20 @@
   "name": "vue-m-message",
   "version": "3.1.0",
   "description": "A message plugin base on Vue",
-  "license": "MIT",
+  "private": false,
   "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
   "types": "types/index.d.ts",
-  "scripts": {
-    "dev": "vue-cli-service serve",
-    "build:docs": "vue-cli-service build",
-    "build:lib": "vue-cli-service lint && vue-cli-service build --dest dist --target lib --name index src/index.js",
-    "lint": "vue-cli-service lint",
-    "open": "dev serve -o docs"
-  },
-  "website": "https://lanyueos.com",
+  "keywords": [
+    "vue-m-message",
+    "m-message",
+    "vue-notification",
+    "vue-toast"
+  ],
+  "files": [
+    "dist",
+    "types"
+  ],
   "github": "https://github.com/mengdu/m-message",
   "repository": {
     "type": "https",
@@ -21,62 +24,27 @@
   "bugs": {
     "url": "https://github.com/mengdu/m-message/issues"
   },
-  "keywords": [
-    "vue-m-message",
-    "m-message"
-  ],
   "homepage": "https://mengdu.github.io/m-message/index.html",
+  "license": "MIT",
   "author": {
     "name": "Lanyue",
     "email": "lanyueos@qq.com"
   },
-  "files": [
-    "src",
-    "dist",
-    "types",
-    "README-zh.md"
-  ],
+  "scripts": {
+    "dev": "vite playground",
+    "preview": "vite preview playground",
+    "ts-check": "vue-tsc --noEmit",
+    "build": "npm run ts-check && vite build",
+    "build:playground": "npm run ts-check && vite build playground"
+  },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
-    "babel-eslint": "^10.0.3",
-    "core-js": "^3.3.2",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "vue": "^2.6.10",
-    "vue-dotmd-loader": "^0.2.0",
-    "vue-router": "^3.1.5",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {
-      "no-unused-vars": "warn"
-    },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "eslintIgnore": [
-    "**/*.md"
-  ],
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "@vitejs/plugin-vue": "^2.3.0",
+    "@vitejs/plugin-vue-jsx": "^1.3.9",
+    "less": "^4.1.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vite-plugin-dts": "^1.0.5",
+    "vue": "^3.2.31",
+    "vue-tsc": "^0.29.8"
+  }
 }

@@ -1,11 +1,13 @@
 'use strict'
-const icons = {}
+import { defineComponent, RenderFunction } from 'vue'
 
-export const addIcon = function (name, options) {
+const icons: {[key: string]: any} = {}
+
+export const addIcon = function (name: string, options:any) {
   icons[name] = options
 }
 
-const Icon = {
+const Icon = defineComponent({
   name: 'Icon',
   props: {
     name: String,
@@ -13,11 +15,12 @@ const Icon = {
   },
   computed: {
     svg () {
+      if (!this.name) return undefined
       return icons[this.name]
     }
   },
   // eslint-disable-next-line
-  render (h) {
+  render (h: RenderFunction) {
     const svg = this.svg
 
     if (!svg) {
@@ -38,15 +41,15 @@ const Icon = {
           viewBox={svg.viewBox}
           style={style}
           class={svg.class}>
-          { svg.defs && <defs domPropsInnerHTML={svg.defs}></defs> }
+          { svg.defs && <defs v-html={svg.defs}></defs> }
           { svg.path && <path fill="currentColor" d={svg.path} /> }
-          { svg.html && <g domPropsInnerHTML={svg.html}></g> }
+          { svg.html && <g v-html={svg.html}></g> }
           {this.$slots.default}
         </svg>
       </span>
     )
   }
-}
+})
 
 Icon.add = addIcon
 

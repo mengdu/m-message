@@ -1,11 +1,12 @@
 <script lang="ts">
 import {
-  defineComponent, reactive, onMounted, ref, onBeforeMount
+  defineComponent, reactive, onMounted, ref, onBeforeMount,
+  Ref
 } from 'vue'
 import Icon from './icon'
 
 function useTimeout(cb: () => void, time: number) {
-  const t = ref(0)
+  const t: Ref<number> = ref(0)
   t.value = setTimeout(cb, time)
   return {
     stop () {

@@ -67,14 +67,14 @@ interface MessageIntance {
 
 ### MessageOptions
 
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+| Attribute      | Description    | Type      | Optional value       | Default   |
 |---------- |-------- |---------- |-------------  |-------- |
 | type   |  Message type icon  | string | '', 'info', 'success', 'error', 'warning', 'loading'  |   'info'   |
 | iconURL   | Replace type icon with picture | string | —  |   —   |
 | title   | Message title | string | —  |    ''   |
 | message   | Message content | string | —  |    ''   |
 | position   | Message display position | string | 'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' |
-| duration   | Message display duration, in MS; It will not be automatically closed when -1 | number | —  |   3000   |
+| duration   | Message display duration, in MS; When ` - 1 ', it needs to be closed manually | number | —  |   3000   |
 | width   | Message block width, auto width by default | string | —  |  ''  |
 | className   | class name  | string | — |  — |
 | wrapperClassName   | class name for wrapper | string | — |  — |
@@ -82,7 +82,7 @@ interface MessageIntance {
 | supportHTML   | Whether the message content supports HTML (only valid when the message is a string) | boolean | true/false | false |
 | isCollapsed   | Collapse content  | boolean | true/false |   false   |
 | collapsable   | Collapsable | boolean | true/false |   false   |
-| closable  | Whether it can be closed (the close button is displayed; this attribute is invalid when `duration = - 1`) | boolean | true/false |  false   |
+| closable  | Whether it can be closed | boolean | true/false |  false   |
 | hasMask   | Does it contain a mask | boolean | true/false |  false   |
 | stopTimerOnHover   | Whether to recalculate the display duration when the mouse moves over | boolean | true/false |  true   |
 | onClose   | Close callback | () => void | —  |    —   |

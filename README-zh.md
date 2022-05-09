@@ -67,14 +67,14 @@ interface MessageIntance {
 
 ### MessageOptions
 
-| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+| 属性      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | type   | 消息类型图标 | string | '', 'info', 'success', 'error', 'warning', 'loading'  |   'info'   |
 | iconURL   | 使用图片替换类型图标 | string | —  |   —   |
 | title   | 消息标题 | string | —  |    ''   |
 | message   | 消息内容 | string | —  |    ''   |
 | position   | 消息展示位置 | string | 'top-left', 'top-center', 'top-right', 'center', 'bottom-left', 'bottom-center', 'bottom-right' |
-| duration   | 消息显示时长，单位ms；-1时不会自定关闭 | number | —  |   3000   |
+| duration   | 消息显示时长，单位ms；当 `-1` 时需要手动关闭 | number | —  |   3000   |
 | width   | 消息块宽度，默认自动宽 | string | —  |  ''  |
 | className   | 消息块类名 | string | — |  — |
 | wrapperClassName   | 包裹层类名 | string | — |  — |
@@ -82,7 +82,7 @@ interface MessageIntance {
 | supportHTML   | 消息内容是否支持html（message 为字符串时才有效） | boolean | true/false | false |
 | isCollapsed   | 是否折叠内容 | boolean | true/false |   false   |
 | collapsable   | 是否可折叠 | boolean | true/false |   false   |
-| closable  | 是否可以关闭（显示关闭按钮；当 `duration=-1` 时此属性无效）  | boolean | true/false |  false   |
+| closable  | 是否可以关闭 | boolean | true/false |  false   |
 | hasMask   | 是否含有遮罩层 | boolean | true/false |  false   |
 | stopTimerOnHover   | 当鼠标移过是否重新计算显示时长 | boolean | true/false |  true   |
 | onClose   | 关闭回调 | () => void | —  |    —   |

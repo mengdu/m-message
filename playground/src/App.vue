@@ -51,6 +51,10 @@ const handleMessage = () => {
   const msg = message({ ...state })
   console.log(msg)
 }
+
+const handleCloseAll = () => {
+  message.closeAll()
+}
 </script>
 
 <template>
@@ -148,7 +152,8 @@ const handleMessage = () => {
           <td></td>
           <td>
             <p></p>
-            <button @click="handleMessage" class="m-btn">Show Message</button>
+            <button @click="handleMessage" class="m-btn">Show Message</button>&nbsp;
+            <button @click="handleCloseAll" class="m-btn">Close All</button>
           </td>
         </tr>
       </tbody>

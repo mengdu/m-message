@@ -144,7 +144,7 @@ export default defineComponent({
             </svg>
           </button>
           <button class="m-message--button m-message--close"
-            v-if="duration < 0 || closable"
+            v-if="closable"
             @click="handleClose">
             <svg viewBox="0 0 35 35" width="20" height="20" version="1.1" fill="currentColor">
               <path d="M19.5,17.5l5.1,5.1l-2,2l-5.1-5.1l-5.1,5.1l-2-2l5.1-5.1l-5.1-5.1l2-2l5.1,5.1l5.1-5.1l2,2L19.5,17.5z"></path>

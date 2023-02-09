@@ -11,12 +11,6 @@ const withInstall = <T>(t: T, fn: PluginInstallFunction) => {
   return t as WithInstall<T>
 }
 
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    $mmessage: typeof message
-  }
-}
-
 export default withInstall(message, function (app: App, options: { name?: string, defaultOptions?: MessageTypeOptions } = {}) {
   message._context = app._context
   app.config.globalProperties['$' + (options.name || 'mmessage')] = message

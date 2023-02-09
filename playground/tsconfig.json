@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // "rootDir": "",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",

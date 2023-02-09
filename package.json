@@ -34,7 +34,7 @@
     "dev": "vite playground",
     "preview": "vite preview playground",
     "ts-check": "vue-tsc --noEmit",
-    "build": "npm run ts-check && vite build",
+    "build": "npm run ts-check && rm -rf types dist && vite build",
     "build:playground": "npm run ts-check && vite build playground"
   },
   "devDependencies": {

@@ -6,3 +6,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $mmessage: typeof import('../../src')
+  }
+}
+
+export {}
